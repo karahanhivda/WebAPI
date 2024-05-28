@@ -1,0 +1,14 @@
+﻿@using Galeri.Data
+@model Araba 
+
+<div class="form-control">
+    <form asp-action="Create">
+        <label asp-for="Marka">Marka: </label>
+        <input asp-for="Marka" class="form-control"/>
+        
+        <label asp-for="Renk">Renk:</label>
+        <input asp-for="Renk" class="form-control"/>
+        
+        <input class="btn btn-primary" type="submit" value="Ekle" />
+    </form>
+</div>

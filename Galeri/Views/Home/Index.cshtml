@@ -1,0 +1,24 @@
+﻿@using Galeri.Data
+@model List<Araba>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table class="table  table-hover" >
+    <thread>
+        <tr style="background-color: aliceblue">
+            <td>Id</td>
+            <td>Marka</td>
+            <td>Renk</td>
+        </tr>
+    </thread>
+
+    @foreach(var araba in Model)
+    {
+        <tr style="background-color: cadetblue">
+            <td>@araba.Id</td>
+            <td>@araba.Marka</td>
+            <td>@araba.Renk</td>
+        </tr>
+    }
+</table>
