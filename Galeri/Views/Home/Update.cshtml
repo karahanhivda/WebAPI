@@ -1,0 +1,20 @@
+﻿@using Galeri.Data
+@model Araba
+
+<div class="alert alert-info">
+    Güncellemek istediğinize emin misiniz?
+</div>
+<div class="alert alert-secondary">
+    Marka:@Model.Marka Renk:@Model.Renk
+</div>
+<div>
+<form asp-action="Guncelle" method="post">
+    
+        <label class="form-control" asp-for="Marka"></label>
+        <input class="form-control" asp-for="Marka" />
+
+        <label class="form-control" asp-for="Renk"></label>
+        <input class="form-control" asp-for="Renk"/>
+    
+</form>
+</div>

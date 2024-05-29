@@ -40,5 +40,31 @@ namespace Galeri.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int Id)
+        {
+            return View(await _httpClient.GetFromJsonAsync<Araba>("http://localhost:5064/api/Araba/IdIleGetir?Id=" + Id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Araba araba)
+        {
+            await _httpClient.DeleteAsync("http://localhost:5064/api/Araba/Sil?Id=" + araba.Id);
+            return RedirectToAction("Index");    
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Update(int Id)
+        {
+            return View(await _httpClient.GetFromJsonAsync<Araba>("http://localhost:5064/api/Araba/IdYeGoreGetir?Id=" + Id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(Araba araba)
+        {
+            await _httpClient.PutAsJsonAsync<Araba>("http://localhost:5064/api/Araba/Guncelle?Id=" + araba.Id, araba);
+            return RedirectToAction("Index");
+        }
     }
 }

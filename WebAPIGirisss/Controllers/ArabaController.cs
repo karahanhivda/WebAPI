@@ -36,7 +36,7 @@ namespace WebAPIGirisss.Controllers
             return Ok("Eklendi!");   
         }
 
-        [HttpDelete("Arabalar")]
+        [HttpDelete("Sil")]
         public IActionResult ArabaSil(int Id) 
         {
             //_appDbContext.Arabalar.FirstOrDefault(a => a.Id==Id);
@@ -52,7 +52,7 @@ namespace WebAPIGirisss.Controllers
             return Ok("Silindi");    
         }
 
-        [HttpPut("Arabalar")]
+        [HttpPut("Guncelle")]
         public IActionResult ArabaGuncelle(int Id, Araba araba)
         {
             Araba arabaa = new Araba();
@@ -69,6 +69,17 @@ namespace WebAPIGirisss.Controllers
             _appDbContext.SaveChanges();
 
             return Ok();
+        }
+
+        [HttpGet("IdIleGetir")]
+        public IActionResult IdYeGoreGetir(int Id) 
+        {
+            var arananAraba = _appDbContext.Arabalar.Find(Id);
+            if(arananAraba == null)
+            {
+                return BadRequest("Aranan araba bulunamadı!");
+            }
+            return Ok(arananAraba);    
         }
     }
 }
